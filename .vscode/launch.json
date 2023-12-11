@@ -1,0 +1,33 @@
+{
+  "inputs": [
+    {
+      "id": "bin",
+      "type": "promptString",
+      "default": "example",
+      "description": "Enter the bin name",
+    }
+  ],
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "[standard] inputs do work",
+      "program": "cargo",
+      "args": [
+        "run",
+        "--bin=${input:bin}"
+      ]
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "[Cargo] inputs do not work",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=${input:bin}"
+        ]
+      },
+    },
+  ]
+}
